@@ -1,0 +1,41 @@
+﻿<Window x:Class="LibraryExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="503" Width="800">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Command="{Binding OpenFileCommand}"/>
+                <MenuItem Header="Сохранить как" Command="{Binding SaveToFileCommand}" />
+                <MenuItem Header="Сохранить в базу данных" Command="{Binding SaveToDatabaseCommand}"/>
+                <Separator />
+                <MenuItem Header="Выход" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <ListBox HorizontalAlignment="Center"
+                 Height="326"
+                 VerticalAlignment="Center"
+                 Width="556"
+                 SelectedItem="{Binding SelectedBook}"
+                 ItemsSource="{Binding Books}"
+                 FontSize="14"
+                 FontWeight="Bold"
+                 FontStyle="Normal">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding NormalizeName}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <Label Content="Книги" HorizontalAlignment="Center" Margin="0,42,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <Button Content="Добавить" Command="{Binding AddNewBookCommand}" HorizontalAlignment="Left" Margin="256,412,0,0" VerticalAlignment="Top" Height="39" Width="82"/>
+        <Button Content="Удалить" Command="{Binding DeleteBookCommand}" HorizontalAlignment="Left" Margin="343,412,0,0" VerticalAlignment="Top" Height="39" Width="82"/>
+        <Button Content="Изменить" Command="{Binding EditBookCommand}" HorizontalAlignment="Left" Margin="431,412,0,0" VerticalAlignment="Top" Height="39" Width="82"/>
+    </Grid>
+</Window>
